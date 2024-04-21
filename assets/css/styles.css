@@ -301,12 +301,13 @@ h2{
     padding: 2px;    
     width:250px; 
     cursor:pointer; 
-    transition:all .5s;
+    transition: all 0.3s ease-in-out;;
     
   }
 
   .portadas .card:hover{
-    transform: scale(1.05); /* Igual que: scaleX(0.7) scaleY(0.7) */
+    transform: scale(1.025);
+    filter: brightness(115%); /* Igual que: scaleX(0.7) scaleY(0.7) */
   }
 
   .portadas .card img {
@@ -332,15 +333,16 @@ h2{
     flex-direction:column;
     justify-content: center;
     align-items:center;
-    padding-bottom: 50px;;
+    padding-bottom: 50px;
+    
   }
 
   .aclamadas{
     margin:35px 0;
     display: flex;
     align-items:center;
-    justify-content: flex-start;
-    flex-wrap: no-wrap;
+    justify-content: flex-center;
+    flex-wrap: nowrap;
     gap: 20px;
     max-width: 1000px; 
     overflow-x:scroll;
@@ -351,6 +353,7 @@ h2{
 
   .aclamadas .card{
     min-width:150px;
+    transition: all 0.2s ease-in-out;
     
   }
 
@@ -358,6 +361,11 @@ h2{
     width: 100%;
     border-radius: 6px;
     margin-bottom: 10px;
+    
+  }
+
+  .aclamadas .card:hover{
+    filter: brightness(125%);
   }
 
   .footer{
@@ -782,6 +790,9 @@ grid-row-gap: 0px;
       .details-container .left{
         display:none;
       }
+
+      .aclamadas{
+        width:100%;
 }
   
 @media screen and (max-width:858px) and (orientation:landscape) {
@@ -809,6 +820,8 @@ grid-row-gap: 0px;
   .portadas .card h5{
     color:#ffffff;
   }
+
+  
 
 }
 
