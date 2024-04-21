@@ -12,6 +12,7 @@
   box-sizing: border-box;
 }
 
+
 html {
   height: 100%;
   color:#ffffff;
@@ -20,6 +21,8 @@ html {
 body {
   font-family: "Open Sans", sans-serif;
   background-color: #2d3436;
+   scrollbar-color: #9f3647  #181419; 
+    scrollbar-width: thin;
 }
 
 a{
