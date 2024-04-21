@@ -510,10 +510,17 @@ h2{
   }
 
   .ayuda{
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    width:100%;
+  }
+
+  .ayuda a{
     cursor:pointer;
   }
 
-  .ayuda:hover{
+  .ayuda a:hover{
     color:#9f3647;
   }
 
