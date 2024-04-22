@@ -20,9 +20,9 @@ const handleFormSubmit = (event) => {
   const formJSON = Object.fromEntries(data.entries());
   console.log(formJSON);
 
-  if (!formJSON.email || !formJSON.password) {
-    return alert("El mail y la contraseña son obligatorios");
-  }
+  // if (!formJSON.email || !formJSON.password) {
+  //   return alert("El mail y la contraseña son obligatorios");
+  // }
 
   alert(`Para ser enviado al backend\n\n ${JSON.stringify(formJSON, null, 2)}`);
 
