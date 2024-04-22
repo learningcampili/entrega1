@@ -77,6 +77,16 @@ h2{
     color:white;
 }
 
+@keyframes zoomIn {
+  0%{
+    transform:scale(0.3);
+  }
+  100%{
+    transform:scale(1)
+  }
+  
+}
+
 /* MENU */ 
 
 .menu {
@@ -209,6 +219,7 @@ h2{
     }
   
     .hero .register {
+     
       margin-top:3rem;
       padding:10px 20px;
       border-radius:8px;
@@ -467,6 +478,7 @@ h2{
     display:flex;
     justify-content: center;
     align-items: center;
+    animation:zoomIn 2s;
   }
 
   
@@ -476,6 +488,7 @@ h2{
     padding: 20px 40px;
     border:2px solid #ffffff;
     border-radius:20px;
+    
   }
 
 .boton-register{
@@ -816,6 +829,7 @@ grid-row-gap: 0px;
         border:none;
         margin-top:2rem;
         min-width:320px;
+        
       }
 
       .details-container{
@@ -858,5 +872,7 @@ grid-row-gap: 0px;
   
 
 }
+
+
 
 
