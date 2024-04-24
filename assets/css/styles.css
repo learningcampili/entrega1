@@ -698,7 +698,8 @@ grid-row-gap: 0px;
       "revenue revenue-data";
   }
   
-  .status { grid-area: status; }
+  .status { grid-area: status;
+   }
   
   .status-data { grid-area: status-data; }
   
@@ -718,6 +719,7 @@ grid-row-gap: 0px;
   .status,.language,.budget, .revenue{
     min-width:200px;
   }
+  
 
 
 
@@ -878,10 +880,12 @@ grid-row-gap: 0px;
   }
 
   .details-container{
-    padiing:1remM
+    padding:1rem;
   }
 
-  
+  .status, .language, .budget, .revenue {
+    min-width: 100%;
+}
 
 }
 
