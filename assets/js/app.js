@@ -11,7 +11,7 @@ addEventListener("DOMContentLoaded", () => {
   }
 });
 
-const handleFormSubmit = (event) => {
+function handleFormSubmit(event) {
   event.preventDefault();
 
   const data = new FormData(event.target);
@@ -27,4 +27,4 @@ const handleFormSubmit = (event) => {
   alert(`Para ser enviado al backend\n\n ${JSON.stringify(formJSON, null, 2)}`);
 
   form.reset();
-};
+}
