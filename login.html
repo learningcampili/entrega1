@@ -37,17 +37,24 @@
         <h2 class="title mb-3">Login</h2>
         <div class="register-form">
           <form action="#" method="POST" id="login-form">
-
+            
             <div class="row mb-3">
+              <!-- Validacion de los campos de input para email y password -->
               <input type="email" id="email" name="email" class="form-control form-control-lg personal"
-                aria-describedby="passwordHelpBlock" placeholder="Email" />
+                aria-describedby="emailHelpBlock" placeholder="Email" required title="Por favor, ingresa un correo electrónico válido." />
+              <div id="emailHelpBlock" class="form-text">
+                Ingresa un correo electrónico válido.
+              </div>
             </div>
             <div class="row mb-3">
               <input type="password" id="password" name="password" class="form-control form-control-lg personal"
-                aria-describedby="passwordHelpBlock" placeholder="Contraseña" />
+                aria-describedby="passwordHelpBlock" placeholder="Contraseña" required minlength="8"
+                title="La contraseña debe tener al menos 8 caracteres." />
+              <div id="passwordHelpBlock" class="form-text">
+                La contraseña debe tener al menos 8 caracteres.
+              </div>
             </div>
-
-
+ 
 
             <div class="row mb-3">
               <button class="boton-register" type="submit">Login</button>
