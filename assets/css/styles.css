@@ -54,6 +54,26 @@ a{
     color:#fffffD;
 }
 
+.campo p{
+  visibility: hidden;
+  display:block;
+  margin-left:0;
+  font-size: small;
+  font-weight: 500;
+}
+
+
+
+p.error{
+  visibility: visible;
+  color: #e74c3c;
+}
+
+p.ok{
+  display:none;
+}
+
+
 li{
     list-style: none;
 }
@@ -989,3 +1009,5 @@ h2{
   font-size: 0.9rem;
 }
 }
+
+
