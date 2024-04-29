@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAC-Movies Administracion</title>
+    <link rel="stylesheet" href="./assets/css/styles.css">
+
+</head>
+
+<body>
+    <div class="admin-container">
+        <h1 id="titulo">Administración</h1>
+        <div class="botones">
+            <button onClick="window.location.replace('login.html')">Login</button>
+            <button onClick="window.location.replace('index.html')">Volver</button>
+        </div>
+
+
+    </div>
+
+    <script>
+        const loggedIn = localStorage.getItem('user')
+        const titulo = document.querySelector("#titulo");
+        const botones = document.querySelector(".botones")
+
+
+        if (loggedIn) {
+            console.log(titulo)
+            titulo.innerText = 'Administración'
+            botones.style.display = 'none'
+
+
+        } else {
+            titulo.innerText = '401 - No Autorizado'
+        }
+    </script>
+</body>
+
+</html>

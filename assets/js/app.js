@@ -1,7 +1,6 @@
 addEventListener("DOMContentLoaded", () => {
   const btnMenu = document.querySelector(".btn-menu");
   const menuItems = document.querySelector(".menu-items");
-  console.log(btnMenu);
 
   // captura datos para ver si ya inicio session o no
   const logOutButton = document.querySelector("#log-out");
@@ -12,7 +11,6 @@ addEventListener("DOMContentLoaded", () => {
   // para el menu hamburgesa
   if (btnMenu) {
     btnMenu.addEventListener("click", () => {
-      console.log("Click");
       menuItems.classList.toggle("show");
     });
     menuItems.addEventListener("click", () => {
@@ -38,13 +36,10 @@ function handleFormSubmit(event) {
   event.preventDefault();
 
   const data = new FormData(event.target);
-  console.log(data);
 
   const formJSON = Object.fromEntries(data.entries());
-  console.log(formJSON);
 
   if (!formJSON.term) {
-    console.log("no ingresaste nada");
     return;
   }
 

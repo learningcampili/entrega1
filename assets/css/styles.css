@@ -716,6 +716,46 @@ h2{
   .status,.language,.budget, .revenue{
     min-width:200px;
   }
+
+
+  .admin-container{
+    max-width:1366px;
+    margin: 0 auto;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+
+    .botones{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:20px;
+    }
+    button {
+      margin-top: 3rem;
+      padding: 10px 20px;
+      border-radius: 8px;
+      border: 1px solid #9f3647;
+      background-color: #9f3647;
+      color: white;
+      font-size: 2rem;
+      border-radius: 104px;
+      cursor: pointer;
+      transition: all .5s;
+      cursor: pointer;
+      &:hover{
+        background-color: #dd566a;
+        border: 1px solid #ffffff;
+      }
+    }
+
+
+}
+
+
+
   
   /* media queries */
 
