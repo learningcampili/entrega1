@@ -149,7 +149,7 @@ h2{
   }
   
   .menu-items li {
-    border-radius: 3px;
+    border-radius: 8px;
     margin: 0 5px;
   }
   
@@ -160,14 +160,19 @@ h2{
     display: block;
     /* text-transform: uppercase; */
     color: #ffffff;
+    
   }
 
-  .menu-items li a.iniciar-sesion{
+  .menu-items li a.logout{
+    display:none;
+  }
+
+  .menu-items li a.iniciar-sesion,.menu-items li a.logout{
     background-color: #000000;
     border-radius:8px;
     
   }
-  .menu-items li a.iniciar-sesion:hover {
+  .menu-items li a.iniciar-sesion:hover,.menu-items li a.logout:hover {
     background: #545454;
   }
   

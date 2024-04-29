@@ -1,6 +1,7 @@
 addEventListener("DOMContentLoaded", () => {
   const btnMenu = document.querySelector(".btn-menu");
   const menuItems = document.querySelector(".menu-items");
+  console.log(btnMenu);
 
   // captura datos para ver si ya inicio session o no
   const logOutButton = document.querySelector("#log-out");
@@ -8,6 +9,19 @@ addEventListener("DOMContentLoaded", () => {
   const registraseButton = document.querySelector("#registrarse");
   var isLogged = localStorage.getItem("user");
 
+  // para el menu hamburgesa
+  if (btnMenu) {
+    btnMenu.addEventListener("click", () => {
+      console.log("Click");
+      menuItems.classList.toggle("show");
+    });
+    menuItems.addEventListener("click", () => {
+      menuItems.classList.toggle("show");
+    });
+  }
+  if (logOutButton) {
+    logOutButton.addEventListener("click", logout);
+  }
   // para mostrar o iniciar Session o el Logout
   if (!isLogged) {
     logOutButton.style.display = "none";
@@ -17,19 +31,6 @@ addEventListener("DOMContentLoaded", () => {
     logOutButton.style.display = "block";
     logInButton.style.display = "none";
     registraseButton.style.display = "none";
-  }
-
-  // para el menu hamburgesa
-  if (btnMenu) {
-    btnMenu.addEventListener("click", () => {
-      menuItems.classList.toggle("show");
-    });
-    menuItems.addEventListener("click", () => {
-      menuItems.classList.toggle("show");
-    });
-  }
-  if (logOutButton) {
-    logOutButton.addEventListener("click", logout);
   }
 });
 
@@ -44,8 +45,8 @@ function handleFormSubmit(event) {
 
   if (!formJSON.term) {
     console.log("no ingresaste nada");
-    return;}
- 
+    return;
+  }
 
   alert(`Para ser enviado al backend\n\n ${JSON.stringify(formJSON, null, 2)}`);
 
