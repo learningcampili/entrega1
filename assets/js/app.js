@@ -1,6 +1,7 @@
 addEventListener("DOMContentLoaded", () => {
   const btnMenu = document.querySelector(".btn-menu");
   const menuItems = document.querySelector(".menu-items");
+  const btnBrand = document.querySelector(".brand");
 
   // captura datos para ver si ya inicio session o no
   const logOutButton = document.querySelector("#log-out");
@@ -15,6 +16,9 @@ addEventListener("DOMContentLoaded", () => {
       menuItems.classList.toggle("show");
     });
     menuItems.addEventListener("click", () => {
+      menuItems.classList.toggle("show");
+    });
+    btnBrand.addEventListener("click", () => {
       menuItems.classList.toggle("show");
     });
   }
