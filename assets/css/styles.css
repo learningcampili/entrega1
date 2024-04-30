@@ -721,7 +721,8 @@ h2{
   .admin-container{
     max-width:1366px;
     margin: 0 auto;
-    height:100vh;
+    height:calc(100vh-65px);
+    min-height:90vh;
     display:flex;
     justify-content:center;
     align-items:center;

@@ -5,25 +5,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CAC-Movies Administracion</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./assets/css/styles.css">
 
 </head>
 
 <body>
+    <nav class="menu">
+        <a href="index.html">
+            <div class="brand">
+                <i class="fas fa-film" aria-hidden="true"></i>
+                <h3 class="logo">CAC-Movies</h3>
+            </div>
+        </a>
+        <ul class="menu-items">
+            <li class=""><a href="index.html#tendencias">Tendencias</a></li>
+            <li> <a class="admin" id="admin" href="admin.html">Administrador de películas</a>
+            <li><a href="register.html" id="registrarse">Registrarse</a></li>
+            <li><a class="iniciar-sesion" id="log-in" href="login.html">Iniciar Sesión</a></li>
+            <li><a href="" type="button" class="logout" id="log-out">Logout</a></li>
+        </ul>
+        <span class="btn-menu">
+            <i class="fa fa-bars"></i>
+        </span>
+    </nav>
     <div class="admin-container">
         <h1 id="titulo">Administración</h1>
-        <div class="botones">
-            <button onClick="window.location.replace('login.html')">Login</button>
-            <button onClick="window.location.replace('index.html')">Volver</button>
-        </div>
+
 
 
     </div>
+    <script src="./assets/js/app.js"></script>
 
     <script>
         const loggedIn = localStorage.getItem('user')
         const titulo = document.querySelector("#titulo");
-        const botones = document.querySelector(".botones")
+
 
 
         if (loggedIn) {

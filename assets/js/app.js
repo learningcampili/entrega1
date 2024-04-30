@@ -5,6 +5,7 @@ addEventListener("DOMContentLoaded", () => {
   // captura datos para ver si ya inicio session o no
   const logOutButton = document.querySelector("#log-out");
   const logInButton = document.querySelector("#log-in");
+  const adminButton = document.querySelector("#admin");
   const registraseButton = document.querySelector("#registrarse");
   var isLogged = localStorage.getItem("user");
 
@@ -25,10 +26,12 @@ addEventListener("DOMContentLoaded", () => {
     logOutButton.style.display = "none";
     logInButton.style.display = "block";
     registraseButton.style.display = "block";
+    adminButton.style.display = "none";
   } else {
     logOutButton.style.display = "block";
     logInButton.style.display = "none";
     registraseButton.style.display = "none";
+    adminButton.style.display = "block";
   }
 });
 
