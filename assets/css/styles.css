@@ -521,6 +521,7 @@ h2{
     border: 2px solid #dd5671;
     border-radius: 20px;
     color:white;
+    padding:10px;
   }
   input.personal:hover,select.personal:hover {
     border-color: #9f3647;
@@ -753,6 +754,34 @@ h2{
     }
 
 
+}
+
+.form-control1{
+  margin-bottom: 20px;
+  min-width: 100wh;
+ 
+}
+
+input.personal,select.personal{
+  background-color: #333333;
+  border: 2px solid #dd5671;
+  border-radius: 20px;
+  color: white;
+  padding: 10px;
+  min-width: 200px;
+  width: 100%;
+}
+
+span.error{
+  display:block;
+  color:red;
+  font-size:.8rem;
+  padding:.5rem 0;
+  margin-left: 10px;;
+}
+
+span.ok{
+  display:none;
 }
 
 

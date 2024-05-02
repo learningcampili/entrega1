@@ -1,13 +1,31 @@
 window.addEventListener("load", () => {
   const form = document.querySelector("#register-form");
 
+  // const checkbox = document.querySelector("#acepta");
+  // checkbox.addEventListener("click", () => {
+  //   if (checkbox.checked == true) {
+  //     console.log("yes");
+  //   } else {
+  //     console.log("no");
+  //   }
+  // });
+
   form.addEventListener("submit", (e) => {
     e.preventDefault(); // para evitar que refresque la pagina
     //desetructuracion del objeto
-    const { errors, nombre, apellido, email, password, fecha } = validaCampos();
+    const { errors, name, apellido, email, password, fecha, pais, acepta } =
+      validaCampos();
     // si no hay errores envia los datos al backend
     if (Object.values(errors).length === 0) {
-      console.log({ nombre, apellido, email, password, fecha, pais });
+      console.log({
+        name,
+        apellido,
+        email,
+        password,
+        fecha,
+        pais,
+        acepta,
+      });
       // alert(
       //   JSON.stringify({
       //     nombre,
@@ -27,12 +45,13 @@ window.addEventListener("load", () => {
     // se crea un onjeto erros para capturar los errores
     let errors = {};
     //captura los campos para trabajar
-    const nombreField = document.querySelector("#nombre");
+    const nombreField = document.querySelector("#name");
     const apellidoField = document.querySelector("#apellido");
     const emailField = document.querySelector("#email");
     const passwordField = document.querySelector("#password");
     const fechaField = document.querySelector("#fecha");
     const paisField = document.querySelector("#pais");
+    const aceptaField = document.querySelector("#acepta");
 
     // captura los valores ingresados x el usuario
     // el trim() saca espacios en blanco al inicio y al final
@@ -42,98 +61,126 @@ window.addEventListener("load", () => {
     const emailValue = emailField.value.trim().toLowerCase();
     const passwordValue = passwordField.value.trim();
     const fechaValue = fechaField.value.trim();
-    let paisValue = "";
-    paisField.onchange = function () {
-      paisValue = paisField.value;
-      console.log(paisvalue);
-    };
+    const paisValue = paisField.value.trim();
+    const aceptaValue = aceptaField.value.trim();
 
     // valida nombre
     if (!nombreValue) {
       // agrega al objeto errors la propiedad password con su valor
-      errors.nombre = "El nombre es requerido";
+      errors.name = "El nombre es requerido";
       // ejecuta esta funcion para colocar el mensaje en el html
-      validaFalla(nombre, "El nombre es requerido");
+      validaFalla("name", "El nombre es requerido");
     } else {
       // si todo esta bien elimina la propiedad email del objeto errors
-      delete errors.nombre;
-      validaOk(nombre);
+      delete errors.name;
+      validaOk("name");
     }
-    // valida apellido
+    //valida apellido
     if (!apellidoValue) {
       // agrega al objeto errors la propiedad password con su valor
       errors.apellido = "El apellido es requerido";
       // ejecuta esta funcion para colocar el mensaje en el html
-      validaFalla(apellido, "El apellido es requerido");
+      validaFalla("apellido", "El apellido es requerido");
     } else {
       // si todo esta bien elimina la propiedad email del objeto errors
       delete errors.apellido;
-      validaOk(apellido);
+      validaOk("apellido");
     }
     //validando campo email
     if (!emailValue) {
       // agrega al objeto errors la propiedad email con su valor
       errors.email = "El email es requerido";
       // ejecuta esta funcion para colocar el mensaje en el html
-      validaFalla(email, "El email es requerido");
+      validaFalla("email", "El email es requerido");
     } else if (!validaEmail(emailValue)) {
       // agrega al objeto errors la propiedad email con su valor
       errors.email = "El email ingresado no es valido";
       // ejecuta esta funcion para colocar el mensaje en el html
-      validaFalla(email, "El email ingresado no es valido");
+      validaFalla("email", "El email ingresado no es valido");
     } else {
       // si todo esta bien elimina la propiedad email del objeto errors
       delete errors.email;
-      validaOk(email);
+      validaOk("email");
     }
     //validando campo password
     if (!passwordValue) {
       // agrega al objeto errors la propiedad password con su valor
       errors.password = "La contraseña es requerida";
       // ejecuta esta funcion para colocar el mensaje en el html
-      validaFalla(password, "La contraseña es requerida");
+      validaFalla("password", "La contraseña es requerida");
     } else {
       // si todo esta bien elimina la propiedad email del objeto errors
       delete errors.password;
-      validaOk(password);
+      validaOk("password");
     }
 
-    // valida apellido
+    // valida fecha
     if (!fechaValue) {
       // agrega al objeto errors la propiedad password con su valor
       errors.fecha = "El fecha es requerido";
       // ejecuta esta funcion para colocar el mensaje en el html
-      validaFalla(fecha, "El fecha es requerido");
+      validaFalla("fecha", "El fecha es requerido");
     } else {
       // si todo esta bien elimina la propiedad email del objeto errors
       delete errors.fecha;
-      validaOk(fecha);
+      validaOk("fecha");
+    }
+    // valida pais
+    if (!paisValue) {
+      // agrega al objeto errors la propiedad password con su valor
+      errors.pais = "El pais es requerido";
+      // ejecuta esta funcion para colocar el mensaje en el html
+      validaFalla("pais", "El pais es requerido");
+    } else {
+      // si todo esta bien elimina la propiedad email del objeto errors
+      delete errors.fecha;
+      validaOk("pais");
+    }
+    // valida Acepta
+    // if (!aceptaValue) {
+    //   // agrega al objeto errors la propiedad password con su valor
+    //   errors.acepta = "Debes aceptar la condiciones";
+    //   // ejecuta esta funcion para colocar el mensaje en el html
+    //   validaFalla("acepta", "Debes aceptar la condiciones");
+    // } else {
+    //   // si todo esta bien elimina la propiedad email del objeto errors
+    //   delete errors.acepta;
+    //   validaOk("acepta");
+    // }
+
+    if (aceptaField.checked == true) {
+      delete errors.acepta;
+      aceptaField.value = true;
+      validaOk("acepta");
+    } else {
+      errors.acepta = "Debes aceptar la condiciones";
+      validaFalla("acepta", "Debes aceptar la condiciones");
     }
 
     // retorna el objeto
     return {
       errors,
-      nombre: nombreValue,
+      name: nombreValue,
       apellido: apellidoValue,
       email: emailValue,
       password: passwordValue,
       fecha: fechaValue,
       pais: paisValue,
+      acepta: aceptaValue,
     };
   };
 
   const validaFalla = (input, msg) => {
-    const formControl = input;
-    const aviso = formControl.nextElementSibling;
-    aviso.innerText = msg;
+    let aviso = document.querySelector(`#${input}Error`);
+    aviso.textContent = msg;
     aviso.classList.add("error");
+    aviso.classList.remove("ok");
   };
 
   const validaOk = (input) => {
-    const formControl = input;
-    const aviso = formControl.nextElementSibling;
+    let aviso = document.querySelector(`#${input}Error`);
     aviso.classList.remove("error");
-    //aviso.classList.add("ok");
+    aviso.classList.add("ok");
   };
 
   const validaEmail = (email) => {
