@@ -117,9 +117,9 @@ window.addEventListener("load", () => {
     // valida fecha
     if (!fechaValue) {
       // agrega al objeto errors la propiedad password con su valor
-      errors.fecha = "El fecha es requerido";
+      errors.fecha = "La fecha es requerida";
       // ejecuta esta funcion para colocar el mensaje en el html
-      validaFalla("fecha", "El fecha es requerido");
+      validaFalla("fecha", "La fecha es requerida");
     } else {
       // si todo esta bien elimina la propiedad email del objeto errors
       delete errors.fecha;
@@ -128,33 +128,23 @@ window.addEventListener("load", () => {
     // valida pais
     if (!paisValue) {
       // agrega al objeto errors la propiedad password con su valor
-      errors.pais = "El pais es requerido";
+      errors.pais = "El país es requerido";
       // ejecuta esta funcion para colocar el mensaje en el html
-      validaFalla("pais", "El pais es requerido");
+      validaFalla("pais", "El país es requerido");
     } else {
       // si todo esta bien elimina la propiedad email del objeto errors
       delete errors.fecha;
       validaOk("pais");
     }
-    // valida Acepta
-    // if (!aceptaValue) {
-    //   // agrega al objeto errors la propiedad password con su valor
-    //   errors.acepta = "Debes aceptar la condiciones";
-    //   // ejecuta esta funcion para colocar el mensaje en el html
-    //   validaFalla("acepta", "Debes aceptar la condiciones");
-    // } else {
-    //   // si todo esta bien elimina la propiedad email del objeto errors
-    //   delete errors.acepta;
-    //   validaOk("acepta");
-    // }
+   
 
     if (aceptaField.checked == true) {
       delete errors.acepta;
       aceptaField.value = true;
       validaOk("acepta");
     } else {
-      errors.acepta = "Debes aceptar la condiciones";
-      validaFalla("acepta", "Debes aceptar la condiciones");
+      errors.acepta = "Debes aceptar los términos y condiciones";
+      validaFalla("acepta", "Debes aceptar los términos y condiciones");
     }
 
     // retorna el objeto
