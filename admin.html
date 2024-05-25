@@ -22,9 +22,11 @@
         </a>
         <ul class="menu-items">
             <li class=""><a href="index.html#tendencias">Tendencias</a></li>
-            <li> <a class="admin" id="admin" href="admin.html">Administrador de películas</a>
             <li><a href="register.html" id="registrarse">Registrarse</a></li>
-            <li><a class="iniciar-sesion" id="log-in" href="login.html">Iniciar Sesión</a></li>
+            <li><a class="iniciar-sesion" href="login.html" id="log-in">Iniciar Sesión</a>
+            </li>
+            <li> <a class="admin" id="admin" href="admin.html">Administrador de películas</a>
+            </li>
             <li><a href="" type="button" class="logout" id="log-out">Logout</a></li>
         </ul>
         <span class="btn-menu">
@@ -37,19 +39,43 @@
 
 
     </div>
-    <script src="./assets/js/app.js"></script>
+    <script>
+        // captura datos para ver si ya inicio session o no
+        const logOutButton = document.querySelector("#log-out");
+        const logInButton = document.querySelector("#log-in");
+        const adminButton = document.querySelector("#admin");
+        const registraseButton = document.querySelector("#registrarse");
+        var isLogged = localStorage.getItem("user");
+
+        // para mostrar o iniciar Session o el Logout
+        if (!isLogged) {
+            logOutButton.style.display = "none";
+            logInButton.style.display = "block";
+            registraseButton.style.display = "block";
+            adminButton.style.display = "none";
+        } else {
+            logOutButton.style.display = "block";
+            logInButton.style.display = "none";
+            registraseButton.style.display = "none";
+            adminButton.style.display = "block";
+        }
+
+        if (logOutButton) {
+            logOutButton.addEventListener("click", logout);
+        }
+
+        function logout() {
+            localStorage.removeItem("user");
+        }
+    </script>
 
     <script>
         const loggedIn = localStorage.getItem('user')
         const titulo = document.querySelector("#titulo");
-
-
-
         if (loggedIn) {
-            
+
             titulo.innerText = 'Administración'
             botones.style.display = 'none'
-
 
         } else {
             titulo.innerText = '401 - No Autorizado'

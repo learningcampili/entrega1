@@ -1,6 +1,36 @@
 document.addEventListener("DOMContentLoaded", () => {
   // Función para obtener el ID de la película desde la URL
 
+  // captura datos para ver si ya inicio session o no
+  const logOutButton = document.querySelector("#log-out");
+  const logInButton = document.querySelector("#log-in");
+  const adminButton = document.querySelector("#admin");
+  const registraseButton = document.querySelector("#registrarse");
+  var isLogged = localStorage.getItem("user");
+
+  console.log(isLogged);
+
+  // para mostrar o iniciar Session o el Logout
+  if (!isLogged) {
+    logOutButton.style.display = "none";
+    logInButton.style.display = "block";
+    registraseButton.style.display = "block";
+    adminButton.style.display = "none";
+  } else {
+    logOutButton.style.display = "block";
+    logInButton.style.display = "none";
+    registraseButton.style.display = "none";
+    adminButton.style.display = "block";
+  }
+
+  if (logOutButton) {
+    logOutButton.addEventListener("click", logout);
+  }
+
+  function logout() {
+    localStorage.removeItem("user");
+  }
+
   const titulo = document.querySelector("#titulo");
   const overview = document.querySelector("#overview");
   const realease = document.querySelector("#realease");
