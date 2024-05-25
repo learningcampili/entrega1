@@ -54,6 +54,19 @@ a{
     color:#fffffD;
 }
 
+
+@keyframes fadeInGrow {
+  0% {
+      opacity: 0;
+      transform: scale(0.1);
+  }
+  100% {
+      opacity: 1;
+      transform: scale(1);
+      background-color: #ffffff;
+  }
+}
+
 .campo p{
   visibility: hidden;
   display:block;
@@ -360,13 +373,15 @@ h2{
   }
 
   .portadas .card{
-    background-color: #ffffff;
+    /* background-color: #ffffff; */
+    background-color: #2D3436;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 2px;    
     width:250px; 
     cursor:pointer; 
-    transition: all 0.3s ease-in-out;;
+    transition: all 0.3s ease-in-out;
+    animation: fadeInGrow 2s forwards;
     
   }
 
@@ -382,7 +397,7 @@ h2{
   }
 
   .portadas .card h5 {
-    font-size: 18px;
+    font-size: 14px;
     margin: 0 0 10px;
     text-align:center;
     color:#545454;
@@ -515,6 +530,8 @@ h2{
     width:100%;
    
 }
+
+
 
 
 

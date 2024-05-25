@@ -1,4 +1,23 @@
 addEventListener("DOMContentLoaded", () => {
+  // const apiUrl = "https://codo-movies-backend.onrender.com/api/movie";
+
+  let offset = 0;
+  let limit = 12;
+
+  const anterior = document.querySelector("#anterior");
+  const siguiente = document.querySelector("#siguiente");
+
+  siguiente.addEventListener("click", () => {
+    offset = offset + limit;
+    console.log(offset);
+  });
+  anterior.addEventListener("click", () => {
+    if (offset > 0) {
+      offset = offset - limit;
+    }
+    console.log(offset);
+  });
+
   const btnMenu = document.querySelector(".btn-menu");
   const menuItems = document.querySelector(".menu-items");
   const btnBrand = document.querySelector(".brand");
