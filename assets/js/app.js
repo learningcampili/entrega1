@@ -1,22 +1,77 @@
 addEventListener("DOMContentLoaded", () => {
-  // const apiUrl = "https://codo-movies-backend.onrender.com/api/movie";
+  const apiUrl = "https://codo-movies-backend.onrender.com/api/movie";
 
-  let offset = 0;
-  let limit = 12;
+  const itemsPerPage = 12;
+  let currentPage = 1;
+  let totalItems = 0;
 
-  const anterior = document.querySelector("#anterior");
-  const siguiente = document.querySelector("#siguiente");
+  const prevButton = document.querySelector("#prev");
+  const nextButton = document.querySelector("#next");
+  const portadas = document.querySelector(".portadas");
 
-  siguiente.addEventListener("click", () => {
-    offset = offset + limit;
-    console.log(offset);
-  });
-  anterior.addEventListener("click", () => {
-    if (offset > 0) {
-      offset = offset - limit;
+  prevButton.addEventListener("click", () => {
+    if (currentPage > 1) {
+      currentPage--;
+      loadPage(currentPage);
     }
-    console.log(offset);
   });
+
+  nextButton.addEventListener("click", () => {
+    if (currentPage < Math.ceil(totalItems / itemsPerPage)) {
+      currentPage++;
+      loadPage(currentPage);
+    }
+  });
+
+  const fetchItems = async (page, limit) => {
+    const offset = (page - 1) * limit;
+    try {
+      const response = await fetch(`${apiUrl}?limit=${limit}&offset=${offset}`);
+      if (!response.ok) {
+        throw new Error("Error en la solicitud: " + response.statusText);
+      }
+      const data = await response.json();
+
+      totalItems = data.totalMovies; // Asegúrate de que la API devuelva el total de elementos
+
+      return data.movies;
+    } catch (error) {
+      console.error("Hubo un problema con la operación fetch:", error);
+      return [];
+    }
+  };
+
+  const renderItems = (movies) => {
+    portadas.innerHTML = "";
+    movies.forEach((movie) => {
+      const movieElement = document.createElement("div");
+      movieElement.innerHTML = `
+            <a href="details.html?id=${movie.id}">
+                <div class="card">
+                    <img src="${movie.poster_path}" class="card-img-top" alt="${movie.title}" />
+                    <div class="card-body">
+                        <h5 class="card-title">${movie.title}</h5>
+                    </div>
+                </div>
+            </a>
+        `;
+      portadas.appendChild(movieElement);
+    });
+
+    // pageInfo.textContent = `Página ${currentPage} de ${Math.ceil(
+    //   totalItems / itemsPerPage
+    // )}`;
+    prevButton.disabled = currentPage === 1;
+    nextButton.disabled = currentPage === Math.ceil(totalItems / itemsPerPage);
+  };
+
+  const loadPage = async (page) => {
+    const movies = await fetchItems(page, itemsPerPage);
+    console.log(movies);
+    renderItems(movies);
+  };
+
+  loadPage(currentPage);
 
   const btnMenu = document.querySelector(".btn-menu");
   const menuItems = document.querySelector(".menu-items");

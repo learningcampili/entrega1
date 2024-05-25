@@ -58,8 +58,8 @@
       <h2>Tendencias de hoy</h2>
       <div class="portadas"> </div>
       <div class="botoneras">
-        <button id="anterior" class="btn">Anterior</button>
-        <button id="siguiente" class="btn">Siguiente</button>
+        <button id="prev" class="btn" disabled>Anterior</button>
+        <button id="next" class="btn">Siguiente</button>
       </div>
     </section>
     <hr />
@@ -147,7 +147,7 @@
     </ul>
   </footer>
   <script src="./assets/js/app.js"></script>
-  <script src="./assets/js/loader.js"></script>
+  <!-- <script src="./assets/js/loader.js"></script> -->
   <script>
     const form = document.querySelector("#buscador");
     form.addEventListener("submit", handleFormSubmit);
