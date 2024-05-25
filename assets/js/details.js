@@ -85,7 +85,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const loadPage = async () => {
     const movie = await fetchItem();
-    console.log(movie);
+
     renderItem(movie);
   };
 

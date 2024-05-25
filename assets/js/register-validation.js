@@ -136,7 +136,6 @@ window.addEventListener("load", () => {
       delete errors.fecha;
       validaOk("pais");
     }
-   
 
     if (aceptaField.checked == true) {
       delete errors.acepta;

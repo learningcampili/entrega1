@@ -67,7 +67,7 @@ addEventListener("DOMContentLoaded", () => {
 
   const loadPage = async (page) => {
     const movies = await fetchItems(page, itemsPerPage);
-    console.log(movies);
+
     renderItems(movies);
   };
 
