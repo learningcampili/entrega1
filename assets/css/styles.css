@@ -586,10 +586,12 @@ h2{
     flex-direction:column;
 }
 
+
+/* url('../images/mario-bg.jpg'); */
   /* Details */
 .details-header{
     height:500px;
-  background:linear-gradient(to right top, #0000008a, #0000008a), url('../images/mario-bg.jpg');
+  background:linear-gradient(to right top, #0000008a, #0000008a), 
     background-size: cover;
     background-position: center;
    

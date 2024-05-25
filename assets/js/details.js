@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // Función para obtener el ID de la película desde la URL
+  const btnMenu = document.querySelector(".btn-menu");
+  const menuItems = document.querySelector(".menu-items");
+  const btnBrand = document.querySelector(".brand");
 
   // captura datos para ver si ya inicio session o no
   const logOutButton = document.querySelector("#log-out");
@@ -21,6 +23,19 @@ document.addEventListener("DOMContentLoaded", () => {
     logInButton.style.display = "none";
     registraseButton.style.display = "none";
     adminButton.style.display = "block";
+  }
+
+  // para el menu hamburgesa
+  if (btnMenu) {
+    btnMenu.addEventListener("click", () => {
+      menuItems.classList.toggle("show");
+    });
+    menuItems.addEventListener("click", () => {
+      menuItems.classList.toggle("show");
+    });
+    btnBrand.addEventListener("click", () => {
+      menuItems.classList.toggle("show");
+    });
   }
 
   if (logOutButton) {
