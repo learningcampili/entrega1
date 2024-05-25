@@ -46,6 +46,11 @@ document.addEventListener("DOMContentLoaded", () => {
     localStorage.removeItem("user");
   }
 
+  function convertDateFormat(dateString) {
+    const [year, month, day] = dateString.split("-");
+    return `${day}-${month}-${year}`;
+  }
+
   const titulo = document.querySelector("#titulo");
   const overview = document.querySelector("#overview");
   const realease = document.querySelector("#realease");
@@ -101,7 +106,7 @@ document.addEventListener("DOMContentLoaded", () => {
     titulo.innerHTML = movie.title;
     overview.innerHTML = movie.overview;
     runtime.innerHTML = `${movie.runtime} min`;
-    realease.innerHTML = movie.release_date;
+    realease.innerHTML = convertDateFormat(movie.release_date);
     genres.innerHTML = movie.genres.map((genre) => genre.name).join(", ");
 
     crew.innerHTML = "";

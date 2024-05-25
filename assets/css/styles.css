@@ -625,6 +625,8 @@ h2{
     top: 90px;
     right: 60px;
     width:300px;
+    border-radius:20px;
+    border:2px solid #ffffff;
 }
 
 .datos{
@@ -634,6 +636,9 @@ h2{
     gap:25px;
     max-width:550px;
     padding:0 10px;
+    background-color: rgba(0,0,0,0.4);
+    padding:1.5rem;
+    border-radius:20px;
 }
 
 .elenco{
