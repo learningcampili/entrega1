@@ -800,6 +800,10 @@ input.personal,select.personal{
   width: 100%;
 }
 
+span{
+  margin:0 5px;
+}
+
 span.error{
   display:block;
   color:red;

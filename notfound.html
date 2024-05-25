@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAC-Not Found</title>
+</head>
+
+<body>
+    <div>
+        <h1>Movie Not Found</h1>
+        <button onclick="history_back()">Volver</button>
+    </div>
+</body>
+
+<style>
+    body {
+        width: 100wh;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #333333;
+    }
+
+    h1 {
+        color: white;
+    }
+
+    button {
+        width: 250px;
+        margin-top: 3rem;
+        padding: 10px 20px;
+        border-radius: 8px;
+        border: 1px solid #9f3647;
+        background-color: #9f3647;
+        color: white;
+        font-size: 2rem;
+        border-radius: 104px;
+        cursor: pointer;
+        transition: all .5s;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #dd566a;
+            border: 1px solid #ffffff;
+        }
+    }
+</style>
+<script>
+    function history_back() {
+        window.history.back();
+    } 
+</script>
+
+</html>
