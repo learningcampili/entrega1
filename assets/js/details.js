@@ -1,4 +1,32 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const apiUrl = "https://codo-movies-backend.onrender.com/api/movie";
+  //const apiUrl = "http://localhost:5000/api/movie";
+  const getMovieIdFromUrl = () => {
+    const params = new URLSearchParams(window.location.search);
+    return params.get("id");
+  };
+
+  const movieId = Number(getMovieIdFromUrl());
+  console.log(movieId);
+
+  const fetchItem = async () => {
+    try {
+      console.log(`${apiUrl}/${movieId}`);
+      const response = await fetch(`${apiUrl}/${movieId}`);
+
+      if (!response.ok) {
+        // window.location.href = "./notfound.html";
+        throw new Error("Error en la solicitud: " + response.statusText);
+      }
+      const movie = await response.json();
+
+      return movie;
+    } catch (error) {
+      console.error("Hubo un problema con la operación fetch:", error);
+      return [];
+    }
+  };
+
   const btnMenu = document.querySelector(".btn-menu");
   const menuItems = document.querySelector(".menu-items");
   const btnBrand = document.querySelector(".brand");
@@ -65,15 +93,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const video = document.querySelector("#video");
   const detailsHeader = document.querySelector(".details-header");
 
-  const getMovieIdFromUrl = () => {
-    const params = new URLSearchParams(window.location.search);
-    return params.get("id");
-  };
-
-  const movieId = getMovieIdFromUrl();
-
-  const apiUrl = "https://codo-movies-backend.onrender.com/api/movie";
-
   function formatNumber(number) {
     // Utiliza el método toLocaleString con las opciones adecuadas para el formato deseado
     return number.toLocaleString("es-ES", {
@@ -83,22 +102,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Función para obtener datos de la API
-  const fetchItem = async () => {
-    try {
-      const response = await fetch(`${apiUrl}/${movieId}`);
-
-      if (!response.ok) {
-        window.location.href = "./notfound.html";
-        throw new Error("Error en la solicitud: " + response.statusText);
-      }
-      const movie = await response.json();
-
-      return movie;
-    } catch (error) {
-      console.error("Hubo un problema con la operación fetch:", error);
-      return [];
-    }
-  };
 
   const renderItem = (movie) => {
     const newImageUrl = movie.backdrop_path; // Reemplaza esto con la URL de la nueva imagen

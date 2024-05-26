@@ -1,5 +1,6 @@
 addEventListener("DOMContentLoaded", () => {
-  const apiUrl = "https://codo-movies-backend.onrender.com/api/movie";
+  apiUrl = "https://codo-movies-backend.onrender.com/api/movie";
+  // const apiUrl = "http://localhost:5000/api/movie";
 
   const itemsPerPage = 12;
   let currentPage = 1;
@@ -8,6 +9,7 @@ addEventListener("DOMContentLoaded", () => {
   const prevButton = document.querySelector("#prev");
   const nextButton = document.querySelector("#next");
   const portadas = document.querySelector(".portadas");
+  const aclamadas = document.querySelector("#aclamadas");
 
   prevButton.addEventListener("click", () => {
     if (currentPage > 1) {
@@ -23,10 +25,17 @@ addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  const fetchItems = async (page, limit) => {
+  const fetchItems = async (page, limit, top = false) => {
     const offset = (page - 1) * limit;
+    let url = `${apiUrl}?limit=${limit}&offset=${offset}`;
+    top === true
+      ? (url = `${apiUrl}?limit=${limit}&offset=${offset}&top=${top}`)
+      : (url = url);
     try {
-      const response = await fetch(`${apiUrl}?limit=${limit}&offset=${offset}`);
+      const response = await fetch(
+        // `${apiUrl}?limit=${limit}&offset=${offset}&top=${top}`
+        url
+      );
       if (!response.ok) {
         throw new Error("Error en la solicitud: " + response.statusText);
       }
@@ -65,10 +74,28 @@ addEventListener("DOMContentLoaded", () => {
     nextButton.disabled = currentPage === Math.ceil(totalItems / itemsPerPage);
   };
 
+  const renderTopItems = (movies) => {
+    aclamadas.innerHTML = "";
+    movies.forEach((movie) => {
+      const movieElement = document.createElement("div");
+      movieElement.innerHTML = `
+            <a href="details.html?id=${movie.id}">
+                <div class="card">
+                    <img src="${movie.poster_path}" class="imgAclamada" alt="${movie.title}" />                   
+                </div>
+            </a>
+        `;
+      aclamadas.appendChild(movieElement);
+    });
+  };
+
   const loadPage = async (page) => {
     const movies = await fetchItems(page, itemsPerPage);
+    const topMovies = await fetchItems(page, itemsPerPage, true);
+    console.log({ topMovies });
 
     renderItems(movies);
+    renderTopItems(topMovies);
   };
 
   loadPage(currentPage);
