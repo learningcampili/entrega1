@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const response = await fetch(`${apiUrl}/${movieId}`);
 
       if (!response.ok) {
-        // window.location.href = "./notfound.html";
+        window.location.href = "./notfound.html";
         throw new Error("Error en la solicitud: " + response.statusText);
       }
       const movie = await response.json();
