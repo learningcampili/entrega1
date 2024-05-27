@@ -2,6 +2,16 @@ addEventListener("DOMContentLoaded", () => {
   apiUrl = "https://codo-movies-backend.onrender.com/api/movie";
   // const apiUrl = "http://localhost:5000/api/movie";
 
+  const loaderContainer = document.querySelector(".loader-container");
+
+  function showLoader() {
+    loaderContainer.style.display = "flex";
+  }
+
+  function hideLoader() {
+    loaderContainer.style.display = "none";
+  }
+
   const itemsPerPage = 12;
   let currentPage = 1;
   let totalItems = 0;
@@ -26,6 +36,7 @@ addEventListener("DOMContentLoaded", () => {
   });
 
   const fetchItems = async (page, limit, top = false) => {
+    showLoader();
     const offset = (page - 1) * limit;
     let url = `${apiUrl}?limit=${limit}&offset=${offset}`;
     top === true
@@ -47,6 +58,8 @@ addEventListener("DOMContentLoaded", () => {
     } catch (error) {
       console.error("Hubo un problema con la operación fetch:", error);
       return [];
+    } finally {
+      hideLoader();
     }
   };
 

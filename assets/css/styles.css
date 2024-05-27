@@ -49,6 +49,48 @@ body {
     scrollbar-width: thin;
 }
 
+.loader-container{
+  width:100%;
+  height:100vh;
+  background-color: #2d3436; 
+  display:none; 
+  flex-direction:column;
+  gap:2rem;
+  justify-content: center; 
+  align-items: center;
+  overflow:hidden;
+  
+}
+
+.loader {
+  display: block; Oculto por defecto 
+  border: 16px solid #f3f3f3;
+  border-top: 16px solid #3498db;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+  //z-index: 1000; /* Para estar por encima de otros elementos */
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.comentario{
+  width:90%;
+  max-width:800px;
+  margin: 0 auto;  
+}
+
+.comentario p{
+ 
+    margin:2rem;
+    font-size:1.25rem;
+}
+
+
 a{
     text-decoration: none;
     color:#fffffD;
